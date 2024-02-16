@@ -4,10 +4,11 @@ from datetime import timedelta
 from pyrogram.errors import UserDeactivated, BotGroupsBlocked
 import asyncio
 
+
 class WaitToSend:
-    msg_1 = timedelta(seconds=10)
-    msg_2 = timedelta(seconds=15)
-    msg_3 = timedelta(seconds=20)
+    msg_1 = timedelta(minutes=6)
+    msg_2 = timedelta(minutes=39)
+    msg_3 = timedelta(days=1, hours=2)
 
     dict_loop = {}
 
@@ -17,6 +18,7 @@ class WaitToSend:
         self.timer = 0
         self.triger = False
         self.triger_msg_3 = False
+
 
 async def loop_msg(obj):
     queue_message = 0
@@ -41,6 +43,7 @@ async def loop_msg(obj):
 def check_user(user_id):
     result = db.query(Users).filter_by(id=user_id).first()
     return result
+
 
 async def check_block_user(message, text):
     try:
